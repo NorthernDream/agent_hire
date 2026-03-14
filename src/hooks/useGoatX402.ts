@@ -11,8 +11,8 @@ declare global {
 
 import { useState, useCallback, useMemo } from 'react'
 import { ethers } from 'ethers'
-import { PaymentHelper, formatUnits } from 'goatx402-sdk'
-import type { Order, PaymentResult } from 'goatx402-sdk'
+import { PaymentHelper, formatUnits } from '../lib/goatx402/index.js'
+import type { Order, PaymentResult } from '../lib/goatx402/index.js'
 import { config } from '../config'
 
 interface OrderResponse {
@@ -291,3 +291,4 @@ export function useGoatX402(signer: ethers.Signer | null) {
     reset,
   }
 }
+

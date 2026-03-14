@@ -4,22 +4,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "bootstrap:sdk": "npm --prefix ..\\goatx402-sdk install && npm --prefix ..\\goatx402-sdk run build && npm --prefix ..\\goatx402-sdk-server-ts install && npm --prefix ..\\goatx402-sdk-server-ts run build",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:client": "vite",
     "dev:server": "tsx watch server/index.ts",
-    "build": "tsc && vite build",
+    "build": "npm run build:server && npm run build:client",
     "build:server": "tsc -p server/tsconfig.json",
     "start": "node dist/server/index.js",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:client": "vite build"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.0",
     "ethers": "^6.9.0",
     "express": "^4.18.0",
-    "goatx402-sdk": "file:../goatx402-sdk",
-    "goatx402-sdk-server": "file:../goatx402-sdk-server-ts",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

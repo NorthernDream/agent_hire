@@ -4,6 +4,7 @@ import { config } from './config'
 import { useConfig } from './hooks/useConfig'
 import { useGoatX402 } from './hooks/useGoatX402'
 import { useWallet } from './hooks/useWallet'
+import { PresentationPage } from './PresentationPage'
 
 interface AgentQuote {
   agentId: string
@@ -54,6 +55,11 @@ interface TaskRecord {
 }
 
 function App() {
+  const currentPath = window.location.pathname.replace(/\/+$/, '') || '/'
+
+  if (currentPath === '/presentation') {
+    return <PresentationPage />
+  }
   const wallet = useWallet()
   const goatx402 = useGoatX402(wallet.signer)
   const { merchantConfig, loading: configLoading, error: configError } = useConfig()
@@ -535,3 +541,4 @@ function App() {
 }
 
 export default App
+
